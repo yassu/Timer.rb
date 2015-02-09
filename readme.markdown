@@ -16,6 +16,16 @@ or
 % ./src/timer.rb [-h hour] [-m minute] [-s second]
 ```
 
+Option
+--------
+
+* `--help`: show help
+* `-v`, `--version`: show version
+* `-m`, `--minute`: define minute value
+* `-s`, `--second`: define second value
+* `-h`, `--hour`: define hour value
+* `--msg`, `--message`: define message value
+
 License
 ---------
 
