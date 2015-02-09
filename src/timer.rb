@@ -68,17 +68,17 @@ if sec or min or hour
   datedelta_s = get_datedelta_format(sec, min, hour)
   time = hour * 60 * 60 + min * 60 + sec
   sleep time
-  print("It spends #{datedelta_s}.")
+  print("It spends #{datedelta_s}.\n")
 
 elsif ARGV.size == 1
   time = to_i_if_strict(ARGV[0])
   if not time
-    print("Illegal integer format.")
+    print("Illegal integer format.\n")
   end
 
   sleep time
   print("It spends #{time} seconds.\n")
 
 else
-  print("Illegal input.")
+  print("Illegal input.\n")
 end
