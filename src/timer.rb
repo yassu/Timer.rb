@@ -4,15 +4,6 @@ require 'optparse'
 
 
 VERSION = 0.2
-ValueError = Class.new(StandardError)
-def to_i_if_strict(s_i)
-  if /^+?\d+$/ =~ s_i
-    return s_i.to_i
-  else
-    raise ValueError
-  end
-end
-
 def append_multiple_prefix(val, s)
   if val > 1
     s += 's'
@@ -49,25 +40,25 @@ sec, min, hour = nil, nil, nil
 OptionParser.new do |opt|
   opt.on('-s VALUE', '--second VALUE') do |s|
     begin
-      sec = to_i_if_strict(s)
-    rescue ValueError => ex
-      print("Warning: second value is not defined.\n")
+      sec = Integer(s)
+    rescue ArgumentError => ex
+      print("Error: second value is not defined.\n")
     end
   end
 
   opt.on('-m VALUE', '--minute VALUE') do |m|
     begin
-      min = to_i_if_strict(m)
-    rescue ValueError => ex
-      print("Warning: minute value is not defined.\n")
+      min = Integer(m)
+    rescue ArgumentError => ex
+      print("Error: minute value is not defined.\n")
     end
   end
 
   opt.on('-h VALUE', '--hour VALUE') do |h|
     begin
-      hour = to_i_if_strict(h)
-    rescue ValueError => ex
-      print("Warning: hour value is not defined.\n")
+      hour = Integer(h)
+    rescue ArgumentError => ex
+      print("Error: hour value is not defined.\n")
     end
   end
 

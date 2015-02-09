@@ -4,12 +4,6 @@
 require 'test/unit'
 require './src/timer.rb'
 
-class Test_to_i_if_strict < Test::Unit::TestCase
-  def test1_to_i_if_strict
-    assert_equal(to_i_if_strict('12'), 12)
-  end
-end
-
 class Test_append_multiple_prefix < Test::Unit::TestCase
   def test1
     assert_equal(append_multiple_prefix(0, 'second'), '0 second')
