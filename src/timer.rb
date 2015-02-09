@@ -3,12 +3,12 @@
 require 'optparse'
 
 
+ValueError = Class.new(StandardError)
 def to_i_if_strict(s_i)
   if /^+?\d+$/ =~ s_i
     return s_i.to_i
   else
-    print("Warning: #{s_i} is not a positive integer.")
-    return nil
+    raise ValueError
   end
 end
 
@@ -28,7 +28,7 @@ def get_datedelta_format(sec, min, hour)
   elsif hour == 0 and min == 0 and sec != 0
     return sec_s
   elsif hour == 0 and min != 0 and sec == 0
-    return hour_s
+    return min_s
   elsif hour == 0 and min != 0 and sec != 0
     return "#{min_s} and #{sec_s}"
   elsif hour != 0 and min == 0 and sec == 0
@@ -46,15 +46,27 @@ end
 sec, min, hour = nil, nil, nil
 OptionParser.new do |opt|
   opt.on('-s VALUE', '--second VALUE') do |s|
-    sec = to_i_if_strict(s)
+    begin
+      sec = to_i_if_strict(s)
+    rescue ValueError => ex
+      print("Warning: second value is not defined.\n")
+    end
   end
 
   opt.on('-m VALUE', '--month VALUE') do |m|
-    min = to_i_if_strict(m)
+    begin
+      min = to_i_if_strict(m)
+    rescue ValueError => ex
+      print("Warning: month value is not defined.\n")
+    end
   end
 
   opt.on('-h VALUE', '--hour VALUE') do |h|
-    hour = to_i_if_strict(h)
+    begin
+      hour = to_i_if_strict(h)
+    rescue ValueError => ex
+      print("Warning: hour value is not defined.\n")
+    end
   end
 
 
