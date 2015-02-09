@@ -3,6 +3,7 @@
 require 'optparse'
 
 
+VERSION = 0.2
 ValueError = Class.new(StandardError)
 def to_i_if_strict(s_i)
   if /^+?\d+$/ =~ s_i
@@ -69,6 +70,9 @@ OptionParser.new do |opt|
     end
   end
 
+  opt.on('-v', '--version') do |v|
+    print "Version: #{VERSION}\n"
+  end
 
   opt.parse!(ARGV)
 end
