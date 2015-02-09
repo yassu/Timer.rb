@@ -37,7 +37,7 @@ def get_datedelta_format(sec, min, hour)
     return "#{hour_s} and #{sec_s}"
   elsif hour != 0 and min != 0 and sec == 0
     return "#{hour_s} and #{min_s}"
-  else # hour != 0 and min != 0 and sec ! 0
+  else # hour != 0 and min != 0 and sec != 0
     return "#{hour_s}, #{min_s} and #{sec_s}"
   end
 end
