@@ -1,7 +1,7 @@
 Timer.rb
 ===========
 
- This is a simple timer, which write string when spend time at your console.
+ This is a simple timer, which write string at your console when spend time.
 
 Usage
 ------
