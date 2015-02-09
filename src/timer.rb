@@ -80,7 +80,7 @@ if sec or min or hour
   datedelta_s = get_datedelta_format(sec, min, hour)
   time = hour * 60 * 60 + min * 60 + sec
   sleep time
-  print("It spends #{datedelta_s}.\n")
+  print("It spent #{datedelta_s}.\n")
 
 elsif ARGV.size == 1
   time = to_i_if_strict(ARGV[0])
@@ -90,7 +90,7 @@ elsif ARGV.size == 1
 
   sleep time
   sec_s = append_multiple_prefix(time, 'second')
-  print("It spends #{sec_s}.\n")
+  print("It spent #{sec_s}.\n")
 
 else
   print("Illegal input.\n")
