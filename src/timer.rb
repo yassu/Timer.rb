@@ -89,7 +89,8 @@ elsif ARGV.size == 1
   end
 
   sleep time
-  print("It spends #{time} seconds.\n")
+  sec_s = append_multiple_prefix(time, 'second')
+  print("It spends #{sec_s}.\n")
 
 else
   print("Illegal input.\n")
