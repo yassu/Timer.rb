@@ -43,7 +43,8 @@ def get_datedelta_format(sec, min, hour)
   end
 end
 
-# build sec, min and hour variable
+# build sec, min,  hour, and message variable
+message = nil
 sec, min, hour = nil, nil, nil
 OptionParser.new do |opt|
   opt.on('-s VALUE', '--second VALUE') do |s|
@@ -54,11 +55,11 @@ OptionParser.new do |opt|
     end
   end
 
-  opt.on('-m VALUE', '--month VALUE') do |m|
+  opt.on('-m VALUE', '--minute VALUE') do |m|
     begin
       min = to_i_if_strict(m)
     rescue ValueError => ex
-      print("Warning: month value is not defined.\n")
+      print("Warning: minute value is not defined.\n")
     end
   end
 
@@ -68,6 +69,10 @@ OptionParser.new do |opt|
     rescue ValueError => ex
       print("Warning: hour value is not defined.\n")
     end
+  end
+
+  opt.on('--msg VALUE', '--message VALUE') do |msg|
+    message = msg
   end
 
   opt.on('-v', '--version') do |v|
@@ -84,7 +89,11 @@ if sec or min or hour
   datedelta_s = get_datedelta_format(sec, min, hour)
   time = hour * 60 * 60 + min * 60 + sec
   sleep time
-  print("It spent #{datedelta_s}.\n")
+  if message
+    print("#{message}\n")
+  else
+    print("It spent #{datedelta_s}.\n")
+  end
 
 elsif ARGV.size == 1
   time = to_i_if_strict(ARGV[0])
