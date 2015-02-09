@@ -7,13 +7,13 @@ Usage
 ------
 
 ``` zsh
-% ./timer.rb seconds
+% ./src/timer.rb seconds
 ```
 
 or
 
 ``` zsh
-% ./timer.rb [-h hour] [-m minute] [-s second]
+% ./src/timer.rb [-h hour] [-m minute] [-s second]
 ```
 
 License
