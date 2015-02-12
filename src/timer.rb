@@ -36,7 +36,7 @@ end
 
 if __FILE__ == $0
   begin
-    # build sec, min,  hour, and message variable
+    # build sec, min, hour and message variable
     message = nil
     sec, min, hour = nil, nil, nil
     OptionParser.new do |opt|
