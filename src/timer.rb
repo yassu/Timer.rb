@@ -87,15 +87,17 @@ if sec or min or hour
   end
 
 elsif ARGV.size == 1
-  time = to_i_if_strict(ARGV[0])
+  begin
+    time = Integer(ARGV[0])
+    sleep time
+    sec_s = append_multiple_prefix(time, 'second')
+    print("It spent #{sec_s}.\n")
+  rescue ArgumentError => ex
+    print("Error: seconds is not defined.\n")
+  end
   if not time
     print("Illegal integer format.\n")
   end
-
-  sleep time
-  sec_s = append_multiple_prefix(time, 'second')
-  print("It spent #{sec_s}.\n")
-
 else
   print("Illegal input.\n")
 end
