@@ -3,7 +3,7 @@
 require 'optparse'
 
 
-VERSION = 0.2
+VERSION = "0.2.2"
 def append_multiple_prefix(val, s)
   if val > 1
     s += 's'
@@ -58,6 +58,7 @@ if __FILE__ == $0
 
       opt.on('-v', '--version') do |v|
         print "Version: #{VERSION}\n"
+        exit
       end
 
       opt.parse!(ARGV)
