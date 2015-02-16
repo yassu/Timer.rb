@@ -34,6 +34,17 @@ def get_datedelta_format(sec, min, hour)
   end
 end
 
+def sleep_with_time(sec, min, hour, message, io=$stdout)
+  datedelta_s = get_datedelta_format(sec, min, hour)
+  time = hour * 60 * 60 + min * 60 + sec
+  sleep time
+  if message
+    io.print("#{message}\n")
+  else
+    io.print("It spent #{datedelta_s}.\n")
+  end
+end
+
 if __FILE__ == $0
   begin
     # build sec, min, hour and message variable
@@ -68,20 +79,11 @@ if __FILE__ == $0
       sec = (sec)? sec: 0
       min = (min)? min: 0
       hour = (hour)? hour: 0
-      datedelta_s = get_datedelta_format(sec, min, hour)
-      time = hour * 60 * 60 + min * 60 + sec
-      sleep time
-      if message
-        print("#{message}\n")
-      else
-        print("It spent #{datedelta_s}.\n")
-      end
+      sleep_with_time(sec, min, hour, message)
 
     elsif ARGV.size == 1
       time = Integer(ARGV[0])
-      sleep time
-      sec_s = append_multiple_prefix(time, 'second')
-      print("It spent #{sec_s}.\n")
+      sleep_with_time(time)
     else
       print("Illegal input.\n")
     end
